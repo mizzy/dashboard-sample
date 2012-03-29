@@ -1,0 +1,20 @@
+var results = new Array;
+var cnt = 0;
+<% @results.each do |result| %>
+   results.push({ x: cnt, y: <%= result["value"] %> });
+   cnt++;
+<% end %>
+
+
+var graph = new Rickshaw.Graph( {
+    element: document.querySelector("#chart"), 
+    width: 300, 
+    height: 200, 
+    series: [{
+        color: 'steelblue',
+        data: results
+    }]
+});
+ 
+graph.render();
+
